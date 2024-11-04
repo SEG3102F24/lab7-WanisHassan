@@ -4,3 +4,6 @@
 Access SpringBoot RESTFul API - in branch *server* 
 
 Access Angular Client Application - in branch *client*
+
+Name: Wanis Hassan |
+Student Number: 300255946
