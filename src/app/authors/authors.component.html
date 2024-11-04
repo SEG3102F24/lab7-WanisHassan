@@ -3,16 +3,20 @@
   <label for="authorId">Author ID:</label>
   <input type="number" [(ngModel)]="authorId" id="authorId">
   <button (click)="onSearchAuthor()">Search</button>
+
+  <div *ngIf="author">
+    <h3>Author Details</h3>
+    <p><strong>ID:</strong> {{ author.id }}</p>
+    <p><strong>First Name:</strong> {{ author.firstName }}</p>
+    <p><strong>Last Name:</strong> {{ author.lastName }}</p>
+    <!-- Add other fields as necessary -->
+  </div>
+
+  <div *ngIf="errorMessage" style="color: red;">
+    {{ errorMessage }}
+  </div>
 </div>
 
-<div *ngIf="author">
-  <h3>Author Details</h3>
-  <p><strong>Name:</strong> {{ author.firstName }} {{ author.lastName }}</p>
-</div>
-
-<div *ngIf="errorMessage" style="color: red;">
-  {{ errorMessage }}
-</div>
 
 
 
