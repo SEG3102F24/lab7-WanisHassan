@@ -1,20 +1,17 @@
-<div>
-  <h2>Search for an Author</h2>
+<h2>Search for an Author</h2>
+<form (ngSubmit)="onSearchAuthor()">
   <label for="authorId">Author ID:</label>
-  <input type="number" [(ngModel)]="authorId" id="authorId">
-  <button (click)="onSearchAuthor()">Search</button>
+  <input type="number" [(ngModel)]="authorId" name="authorId" required />
+  <button type="submit">Search</button>
+</form>
 
-  <div *ngIf="author">
-    <h3>Author Details</h3>
-    <p><strong>ID:</strong> {{ author.id }}</p>
-    <p><strong>First Name:</strong> {{ author.firstName }}</p>
-    <p><strong>Last Name:</strong> {{ author.lastName }}</p>
-    <!-- Add other fields as necessary -->
-  </div>
+<div *ngIf="author">
+  <h3>Author Details</h3>
+  <p><strong>Name:</strong> {{ author.firstName }} {{ author.lastName }}</p>
+</div>
 
-  <div *ngIf="errorMessage" style="color: red;">
-    {{ errorMessage }}
-  </div>
+<div *ngIf="errorMessage" style="color: red;">
+  {{ errorMessage }}
 </div>
 
 

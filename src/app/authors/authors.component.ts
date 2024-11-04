@@ -2,21 +2,22 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-authors',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './authors.component.html',
   styleUrls: ['./authors.component.css']
 })
 export class AuthorsComponent {
   authorId: number = 0;
-  author: any = null;
+  author: any;
   errorMessage: string = '';
 
   constructor(private http: HttpClient) {}
-
 
   onSearchAuthor() {
     this.http.get(`http://localhost:8080/books-api/authors/${this.authorId}`)
@@ -27,17 +28,9 @@ export class AuthorsComponent {
           return of(null);
         })
       )
-      .subscribe(
-        (data) => {
-          if (data) {
-            this.author = data;
-            this.errorMessage = '';
-          } else {
-            this.author = null;
-            this.errorMessage = 'Author not found';
-          }
-        }
-      );
+      .subscribe(data => {
+        this.author = data;
+        this.errorMessage = '';
+      });
   }
 }
-
